@@ -1,5 +1,13 @@
 # Change Log
 
+## 10.21.1 (2026-03-19)
+
+### Patch Changes
+
+- Stability and performance improvements
+- Updated dependencies
+  - @kameleoon/javascript-sdk@4.19.1
+
 ## 10.21.0 (2026-03-04)
 
 ### Features
