@@ -1,5 +1,25 @@
 # Change Log
 
+## 10.22.0 (2026-03-23)
+
+### Features
+
+- Added support for variation simulation when feature flags are **inactive (OFF state)** across the following methods:
+  - [`getVariation`][getVariation]
+  - [`getVariations`][getVariations]
+  - [`isFeatureFlagActive`][isFeatureFlagActive]
+  - This support is also extended to the following **deprecated methods**:
+    - [`getVisitorFeatureFlags`][getVisitorFeatureFlags]
+    - [`getActiveFeatureFlags`][getActiveFeatureFlags]
+    - [`getFeatureFlagVariationKey`][getFeatureFlagVariationKey]
+    - [`getFeatureFlagVariable`][getFeatureFlagVariable]
+    - [`getFeatureFlagVariables`][getFeatureFlagVariables]
+
+### Patch Changes
+
+- Updated dependencies
+  - @kameleoon/javascript-sdk@4.20.0
+
 ## 10.21.1 (2026-03-19)
 
 ### Patch Changes
