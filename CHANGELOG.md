@@ -1,5 +1,22 @@
 # Change Log
 
+## 10.24.0 (2026-05-05)
+
+### Features
+
+- Added support for **during the current visit** and **during any of the last visits** settings across the following targeting conditions:
+  - Converted Goal
+  - Feature Flag
+  - Web Experiment
+  - Personalization
+  - Exclusive Campaign
+
+### Patch Changes
+
+- Fixed an issue where the **Web Experiment** condition could return incorrect non-targeted results.
+- Updated dependencies
+  - @kameleoon/javascript-sdk@4.22.0
+
 ## 10.23.0 (2026-04-23)
 
 ### Features
