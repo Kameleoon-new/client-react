@@ -1,5 +1,12 @@
 # Change Log
 
+## 10.27.1 (2026-09-11)
+
+### Patch Changes
+
+- Updated dependencies
+  - @kameleoon/javascript-sdk@4.25.1
+
 ## 10.27.0 (2026-08-28)
 
 > [!CAUTION]
@@ -24,7 +31,6 @@
   - @kameleoon/javascript-sdk@4.25.0
 - Fix an issue where a failed configuration fetch marked the in-memory cache as fresh, so a repeated [`initialize`][initialize] call in an environment with unavailable storage could resolve successfully with an empty configuration instead of fetching again.
 - Targeting conditions of a type unsupported by the SDK are now evaluated as `false` instead of `true`, so visitors are no longer targeted by conditions the SDK cannot evaluate.
-
 
 ## 10.26.5 (2026-07-10)
 
