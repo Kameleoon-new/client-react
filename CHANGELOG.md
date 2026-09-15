@@ -1,5 +1,23 @@
 # Change Log
 
+## 10.28.0 (2026-09-15)
+
+### Features
+
+- Added the new [`dataFileCacheTtl`][configurationParameters] configuration parameter (in minutes, default `90`). It controls how long the data file cached in the storage is considered fresh:
+  - While the cached data file is older than `dataFileRefreshInterval` but younger than `dataFileCacheTtl`, `initialize()` completes immediately with the cached data file and refreshes it in the background (previous behavior with a hardcoded 90-minute period).
+  - Once the cached data file is older than `dataFileCacheTtl`, `initialize()` waits for a fresh data file before completing, so visitors returning after a long inactivity are evaluated against the up-to-date configuration. The cached data file is still used as a fallback if the request fails. Setting `dataFileCacheTtl: 0` disables the background refresh entirely: `initialize()` always waits for a fresh data file once a refresh is due.
+  - **Note:** lowering `dataFileCacheTtl` increases the number of blocking data file requests during SDK initialization and therefore adds the request time to the page load for the affected visitors. Keep `dataFileCacheTtl` greater than `dataFileRefreshInterval` (for example `dataFileRefreshInterval: 5`, `dataFileCacheTtl: 10`) unless every refresh must be applied before initialization completes.
+- Added the new [`dataFileRefreshInterval`][configurationParameters] configuration parameter (in minutes, default `60`) as a more explicit replacement for `updateInterval`. When both are passed, `dataFileRefreshInterval` is used.
+- The [`updateInterval`][configurationParameters] configuration parameter has been deprecated in favor of `dataFileRefreshInterval` and will be removed in the next major version.
+
+[configurationParameters]: https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/react-js-sdk/#configuration-parameters
+
+### Patch Changes
+
+- Updated dependencies
+  - @kameleoon/javascript-sdk@4.26.0
+
 ## 10.27.1 (2026-09-11)
 
 ### Patch Changes
