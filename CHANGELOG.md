@@ -1,5 +1,27 @@
 # Change Log
 
+## 10.29.0 (2026-10-14)
+
+### Features
+
+- Faster configuration updates in browsers: the SDK no longer triggers CORS preflight (`OPTIONS`) requests, so a configuration update takes one request instead of two.
+- Real-time configuration updates (streaming) can now be enabled for server-side SDKs only. In that case, this SDK keeps polling.
+- If you use `@kameleoon/react-native-event-source`, update it to 1.2.0 together with the SDK. Custom event sources passed through `externals` must listen to every event type passed in the new `eventTypes` parameter of `open`.
+
+### Patch Changes
+
+- Real-time updates now recover from streaming outages: when the streaming connection is unavailable or a configuration update fails, the SDK falls back to polling and switches back to streaming once it is available again. Updates published while the connection was down are no longer missed.
+- [`requestTimeout`][configurationParameters] now also covers downloading the response, so a stalled response can no longer block the SDK.
+- [`getRemoteData`][getRemoteData] and [`getRemoteVisitorData`][getRemoteVisitorData] now return the error message sent by the server.
+- A custom event source without `onError` no longer stops configuration updates silently: the SDK keeps polling next to streaming. Implementing `onError` will become required in the next major version.
+- Routine reconnections of the streaming connection are now logged as `INFO` instead of `ERROR`.
+- Updated dependencies
+  - @kameleoon/javascript-sdk@4.27.0
+
+[configurationParameters]: https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/react-js-sdk/#configuration-parameters
+[getRemoteData]: https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/react-js-sdk#getremotedata
+[getRemoteVisitorData]: https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/react-js-sdk#getremotevisitordata
+
 ## 10.28.0 (2026-09-15)
 
 ### Features
